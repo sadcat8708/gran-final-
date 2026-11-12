@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+
+    <meta name="description" content="Ingresa a tu espacio personal de la Promoción 2026 y descubre tu carta especial.">
+
+    <title>Mi acceso | Promoción 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="assets/css/acceso.css">
+</head>
+
+<body>
+
+    <a href="index.html" class="volver">
+        <span aria-hidden="true">←</span>
+        Volver al inicio
+    </a>
+
+    <main class="contenedor-acceso">
+
+        <div class="decoracion-superior" aria-hidden="true">✦</div>
+
+        <section class="tarjeta-acceso">
+
+            <p class="etiqueta">PROMOCIÓN 2026</p>
+
+            <div class="icono-graduacion" aria-hidden="true">
+                ✧
+            </div>
+
+            <h1>
+                Tu historia también<br>
+                merece ser <span>recordada.</span>
+            </h1>
+
+            <p class="descripcion">
+                Este espacio fue preparado especialmente para ti.
+                Ingresa para descubrir tu sorpresa.
+            </p>
+
+            <form id="formulario-acceso">
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="tucorreo@ejemplo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="contrasena">Contraseña</label>
+
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        placeholder="Ingresa tu contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="boton-ingresar">
+                    Ingresar a mi sorpresa
+                    <span aria-hidden="true">→</span>
+                </button>
+
+                <p
+                    id="mensaje-acceso"
+                    class="mensaje"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                ></p>
+
+            </form>
+
+            <div class="separador"></div>
+
+            <p class="nota">
+                Un recuerdo preparado con cariño para nuestra generación.
+            </p>
+
+            <p class="promocion">PROM · 2026</p>
+
+        </section>
+
+        <div class="decoracion-inferior" aria-hidden="true">
+            ✧
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/acceso.js"></script>
+
+</body>
+</html>

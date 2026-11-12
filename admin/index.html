@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0b0b">
+
+    <title>Administración | PROM 2026</title>
+
+    <link rel="stylesheet" href="../assets/css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="fondo-decorativo">
+        <div class="luz luz-1"></div>
+        <div class="luz luz-2"></div>
+        <div class="particula particula-1"></div>
+        <div class="particula particula-2"></div>
+        <div class="particula particula-3"></div>
+    </div>
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <div class="login-logo">
+                <span class="logo-linea"></span>
+                <h2>PROM <span>2026</span></h2>
+                <span class="logo-linea"></span>
+            </div>
+
+            <div class="login-icono">
+                <span>✦</span>
+            </div>
+
+            <div class="login-header">
+
+                <p class="etiqueta">ACCESO RESTRINGIDO</p>
+
+                <h1>Bienvenido <span>de nuevo</span></h1>
+
+                <p class="descripcion">
+                    Panel de administración
+                </p>
+
+            </div>
+
+            <div class="separador">
+                <span></span>
+                <i>✧</i>
+                <span></span>
+            </div>
+
+            <form id="login-form">
+
+                <div class="campo">
+
+                    <label for="email">CORREO ELECTRÓNICO</label>
+
+                    <div class="input-contenedor">
+
+                        <span class="input-icono">✉</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Ingresa tu correo"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="password">CONTRASEÑA</label>
+
+                    <div class="input-contenedor">
+
+                        <span class="input-icono">◆</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="mostrar-password"
+                            class="btn-mostrar"
+                            aria-label="Mostrar contraseña"
+                            aria-pressed="false"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-login">
+
+                    <span>INICIAR SESIÓN</span>
+
+                    <span class="flecha">→</span>
+
+                </button>
+
+                <p id="login-message" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <div class="login-footer">
+
+                <span>✦</span>
+
+                <p>Un recuerdo · Una generación · Una historia</p>
+
+                <span>✦</span>
+
+            </div>
+
+        </section>
+
+        <p class="copyright">
+            © 2026 PROMOCIÓN 2026 · TODOS LOS DERECHOS RESERVADOS
+        </p>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase.js"></script>
+    <script src="../assets/js/admin.js"></script>
+
+    <script>
+        const botonMostrar = document.getElementById("mostrar-password");
+        const campoPassword = document.getElementById("password");
+
+        botonMostrar.addEventListener("click", () => {
+
+            const mostrar = campoPassword.type === "password";
+
+            campoPassword.type = mostrar ? "text" : "password";
+
+            botonMostrar.textContent = mostrar ? "◎" : "◉";
+
+            botonMostrar.setAttribute(
+                "aria-label",
+                mostrar ? "Ocultar contraseña" : "Mostrar contraseña"
+            );
+
+            botonMostrar.setAttribute("aria-pressed", String(mostrar));
+
+        });
+    </script>
+
+</body>
+</html>

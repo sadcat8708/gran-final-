@@ -1,0 +1,724 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* =========================================
+   PROM 2026 — PÁGINA DE ACCESO
+========================================= */
+
+:root {
+    --fondo: #080808;
+    --fondo-secundario: #101010;
+    --tarjeta: #121212;
+
+    --dorado: #c5a46d;
+    --dorado-claro: #e7d2a5;
+
+    --texto: #f5f1e9;
+    --texto-secundario: #aaa39a;
+
+    --borde: rgba(197, 164, 109, 0.2);
+    --sombra: rgba(0, 0, 0, 0.55);
+
+    --transicion: 0.3s ease;
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 40%,
+            rgba(151, 112, 54, 0.10),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 10% 90%,
+            rgba(197, 164, 109, 0.05),
+            transparent 35%
+        ),
+        var(--fondo);
+
+    color: var(--texto);
+    font-family: 'Montserrat', sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 90px 24px 50px;
+    position: relative;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--dorado);
+    color: #17120b;
+}
+
+/* =========================================
+   LUZ AMBIENTAL
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(231, 210, 165, 0.5), transparent),
+        radial-gradient(1px 1px at 80% 15%, rgba(231, 210, 165, 0.4), transparent),
+        radial-gradient(1px 1px at 65% 75%, rgba(231, 210, 165, 0.35), transparent),
+        radial-gradient(1px 1px at 25% 80%, rgba(231, 210, 165, 0.3), transparent);
+
+    opacity: 0.65;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(197, 164, 109, 0.025) 50%,
+        transparent 80%
+    );
+}
+
+/* =========================================
+   VOLVER AL INICIO
+========================================= */
+
+.volver {
+    position: absolute;
+    top: 35px;
+    left: 45px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--texto-secundario);
+
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+        color var(--transicion),
+        transform var(--transicion);
+
+    z-index: 2;
+}
+
+.volver:hover {
+    color: var(--dorado-claro);
+    transform: translateX(-4px);
+}
+
+.volver span {
+    font-size: 16px;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.contenedor-acceso {
+    width: 100%;
+    max-width: 510px;
+
+    position: relative;
+    z-index: 1;
+
+    animation: aparecer 1s ease both;
+}
+
+/* =========================================
+   TARJETA DE ACCESO
+========================================= */
+
+.tarjeta-acceso {
+    position: relative;
+
+    padding: 58px 58px 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            transparent 40%
+        ),
+        var(--tarjeta);
+
+    border: 1px solid var(--borde);
+    border-radius: 3px;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 90px var(--sombra),
+        0 0 70px rgba(197, 164, 109, 0.045);
+
+    overflow: hidden;
+}
+
+/* Línea dorada superior */
+
+.tarjeta-acceso::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+}
+
+/* Brillo decorativo */
+
+.tarjeta-acceso::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -170px;
+    right: -130px;
+
+    border-radius: 50%;
+
+    background: rgba(197, 164, 109, 0.07);
+
+    filter: blur(55px);
+    pointer-events: none;
+}
+
+/* =========================================
+   ETIQUETA
+========================================= */
+
+.etiqueta {
+    color: var(--dorado);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+
+    margin-bottom: 27px;
+}
+
+/* =========================================
+   ICONO
+========================================= */
+
+.icono-graduacion {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(197, 164, 109, 0.4);
+    border-radius: 50%;
+
+    color: var(--dorado-claro);
+    font-size: 30px;
+
+    box-shadow:
+        0 0 30px rgba(197, 164, 109, 0.08);
+
+    animation: brillo 4s ease-in-out infinite;
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.tarjeta-acceso h1 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(36px, 7vw, 48px);
+    line-height: 1.05;
+
+    font-weight: 500;
+    letter-spacing: -0.7px;
+
+    color: var(--texto);
+
+    margin-bottom: 20px;
+}
+
+.tarjeta-acceso h1 span {
+    color: var(--dorado-claro);
+    font-style: italic;
+}
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.descripcion {
+    max-width: 330px;
+
+    margin: 0 auto 36px;
+
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+/* =========================================
+   FORMULARIO
+========================================= */
+
+#formulario-acceso {
+    width: 100%;
+    text-align: left;
+}
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+    margin-bottom: 23px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--dorado-claro);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+}
+
+.campo input {
+    display: block;
+
+    width: 100%;
+    height: 51px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--texto);
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+
+    transition:
+        border-color var(--transicion),
+        background var(--transicion),
+        box-shadow var(--transicion);
+}
+
+.campo input::placeholder {
+    color: #68645f;
+    font-weight: 300;
+}
+
+.campo input:hover {
+    border-color: rgba(197, 164, 109, 0.35);
+}
+
+.campo input:focus {
+    border-color: var(--dorado);
+
+    background: rgba(197, 164, 109, 0.045);
+
+    box-shadow:
+        0 0 0 3px rgba(197, 164, 109, 0.08);
+}
+
+.campo input:focus-visible {
+    outline: 1px solid rgba(231, 210, 165, 0.5);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   BOTÓN DE INGRESO
+========================================= */
+
+#boton-ingresar {
+    width: 100%;
+    min-height: 53px;
+
+    margin-top: 12px;
+    padding: 14px 20px;
+
+    border: 1px solid var(--dorado);
+    border-radius: 2px;
+
+    background: linear-gradient(
+        110deg,
+        #b28e55,
+        #d8bd88
+    );
+
+    color: #17120b;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion),
+        filter var(--transicion),
+        opacity var(--transicion);
+}
+
+#boton-ingresar span {
+    font-size: 17px;
+
+    transition: transform var(--transicion);
+}
+
+#boton-ingresar:hover:not(:disabled) {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 10px 30px rgba(197, 164, 109, 0.2);
+}
+
+#boton-ingresar:hover:not(:disabled) span {
+    transform: translateX(5px);
+}
+
+#boton-ingresar:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#boton-ingresar:disabled {
+    cursor: wait;
+    opacity: 0.65;
+    filter: grayscale(0.15);
+    transform: none;
+    box-shadow: none;
+}
+
+#boton-ingresar:focus-visible {
+    outline: 2px solid var(--dorado-claro);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   MENSAJES DEL SISTEMA
+========================================= */
+
+.mensaje {
+    min-height: 20px;
+
+    margin-top: 16px;
+
+    color: var(--dorado-claro);
+
+    font-size: 11px;
+    line-height: 1.7;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.mensaje:empty {
+    display: none;
+}
+
+/* =========================================
+   SEPARADOR
+========================================= */
+
+.separador {
+    width: 100%;
+    height: 1px;
+
+    margin: 28px 0 23px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(197, 164, 109, 0.35),
+        transparent
+    );
+}
+
+/* =========================================
+   NOTA FINAL
+========================================= */
+
+.nota {
+    color: #817a70;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+
+    line-height: 1.5;
+}
+
+/* =========================================
+   IDENTIDAD PROM
+========================================= */
+
+.promocion {
+    margin-top: 25px;
+
+    color: var(--dorado);
+
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+/* =========================================
+   DECORACIONES EXTERIORES
+========================================= */
+
+.decoracion-superior,
+.decoracion-inferior {
+    position: absolute;
+
+    color: var(--dorado);
+
+    opacity: 0.7;
+    font-size: 23px;
+
+    pointer-events: none;
+}
+
+.decoracion-superior {
+    top: -13px;
+    left: -14px;
+
+    animation: flotar 5s ease-in-out infinite;
+}
+
+.decoracion-inferior {
+    bottom: -12px;
+    right: -14px;
+
+    animation: flotar 5s ease-in-out infinite reverse;
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes brillo {
+    0%, 100% {
+        box-shadow:
+            0 0 15px rgba(197, 164, 109, 0.04);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(197, 164, 109, 0.18);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 650px) {
+    body {
+        padding: 85px 20px 40px;
+    }
+
+    .volver {
+        top: 28px;
+        left: 22px;
+
+        font-size: 9px;
+    }
+
+    .tarjeta-acceso {
+        padding: 48px 35px 35px;
+    }
+
+    .tarjeta-acceso h1 {
+        font-size: 42px;
+    }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 420px) {
+    body {
+        padding: 80px 15px 30px;
+    }
+
+    .tarjeta-acceso {
+        padding: 40px 23px 30px;
+    }
+
+    .etiqueta {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+
+    .icono-graduacion {
+        width: 58px;
+        height: 58px;
+
+        font-size: 26px;
+        margin-bottom: 23px;
+    }
+
+    .tarjeta-acceso h1 {
+        font-size: 36px;
+    }
+
+    .descripcion {
+        font-size: 11px;
+        margin-bottom: 30px;
+    }
+
+    .campo input {
+        height: 48px;
+        font-size: 11px;
+    }
+
+    #boton-ingresar {
+        font-size: 9px;
+        letter-spacing: 1.2px;
+    }
+
+    .nota {
+        font-size: 15px;
+    }
+}
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+========================================= */
+
+@media (max-width: 340px) {
+    body {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .tarjeta-acceso {
+        padding: 35px 18px 28px;
+    }
+
+    .tarjeta-acceso h1 {
+        font-size: 33px;
+    }
+
+    .etiqueta {
+        letter-spacing: 3px;
+    }
+}
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

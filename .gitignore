@@ -1,0 +1,25 @@
+
+# Variables de entorno y credenciales privadas
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+
+# Archivos generados
+dist/
+build/
+
+# Registros
+*.log
+npm-debug.log*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de editores
+*.tmp
+*.temp

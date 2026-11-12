@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
+    <title>Mi carta | Promoción 2026</title>
+    <link rel="stylesheet" href="assets/css/carta.css">
+</head>
+<body>
+
+    <header class="encabezado-carta">
+        <a href="index.html" class="logo">PROM <span>2026</span></a>
+
+        <div class="acciones-encabezado">
+            <button id="cambiar-tema" class="btn-tema" type="button">
+                ◐ Cambiar tema
+            </button>
+
+            <button id="cerrar-sesion" class="btn-cerrar">
+                Cerrar sesión
+            </button>
+        </div>
+    </header>
+
+    <main class="contenedor-carta">
+
+        <section class="bienvenida">
+            <p class="etiqueta">PROMOCIÓN 2026</p>
+
+            <h1>
+                Esto es para ti,
+                <span id="nombre-graduado">graduado</span>.
+            </h1>
+
+            <p>
+                Porque cada persona hizo parte de esta historia.
+                Este recuerdo es especialmente para ti.
+            </p>
+        </section>
+
+        <section class="carta-personal">
+
+            <div class="adorno">✦</div>
+
+            <p class="subtitulo-carta">
+                UNA CARTA PARA RECORDAR
+            </p>
+
+            <h2 id="titulo-carta">Un recuerdo especial</h2>
+
+            <div class="linea-dorada"></div>
+
+            <div id="contenido-carta" class="contenido-texto">
+                Preparando tu carta...
+            </div>
+
+            <p id="despedida-carta" class="despedida"></p>
+
+            <div class="firma">
+                <span>✧</span> PROMOCIÓN 2026
+            </div>
+
+        </section>
+
+        <div class="zona-descarga">
+            <button id="descargar-pdf" class="btn-descargar">
+                ↓ Descargar mi carta en PDF
+            </button>
+            <p>Guarda este recuerdo para siempre.</p>
+        </div>
+
+        <p id="mensaje-carta" class="mensaje-carta"></p>
+
+        <footer>
+            <p>Una etapa termina. Nuestra historia continúa.</p>
+            <span>Hecho con cariño · PROM 2026</span>
+        </footer>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/carta.js"></script>
+
+    <!-- Librería para generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Funciones de descarga -->
+    <script src="assets/js/pdf.js"></script>
+
+</body>
+</html>

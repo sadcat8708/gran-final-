@@ -1,0 +1,751 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================
+   PROM 2026 — CARTA PERSONAL
+========================================== */
+
+:root {
+    --fondo: #080808;
+    --fondo-tarjeta: #11110f;
+    --dorado: #c9a45c;
+    --dorado-claro: #ead5a3;
+    --blanco: #f5f1e8;
+    --gris: #aaa49a;
+    --acento-rgb: 201, 164, 92;
+}
+
+/* ==========================================
+   TEMAS GENERALES
+   Afectan toda la página excepto la carta
+========================================== */
+
+:root[data-tema-general="dorado"] {
+    --dorado: #c9a45c;
+    --dorado-claro: #ead5a3;
+    --acento-rgb: 201, 164, 92;
+}
+
+:root[data-tema-general="azul"] {
+    --dorado: #5c9ec9;
+    --dorado-claro: #a3d5ea;
+    --acento-rgb: 92, 158, 201;
+}
+
+/* ==========================================
+   CONFIGURACIÓN GENERAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(var(--acento-rgb), 0.11),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 0% 70%,
+            rgba(var(--acento-rgb), 0.035),
+            transparent 35%
+        ),
+        var(--fondo);
+
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Iluminación ambiental */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.45), transparent),
+        radial-gradient(1px 1px at 82% 23%, rgba(255,255,255,.35), transparent),
+        radial-gradient(1px 1px at 70% 76%, rgba(255,255,255,.3), transparent),
+        radial-gradient(1px 1px at 23% 85%, rgba(255,255,255,.3), transparent);
+
+    opacity: .55;
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.encabezado-carta {
+    width: 100%;
+    height: 82px;
+    padding: 0 9%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+    z-index: 5;
+
+    background: rgba(8, 8, 8, .72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(var(--acento-rgb), .18);
+}
+
+.logo {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    transition: color .3s ease;
+}
+
+.logo:hover {
+    color: var(--dorado-claro);
+}
+
+.logo span {
+    color: var(--dorado);
+}
+
+/* Acciones del encabezado */
+
+.acciones-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-tema,
+.btn-cerrar {
+    min-height: 39px;
+    padding: 0 17px;
+
+    background: transparent;
+    border: 1px solid rgba(var(--acento-rgb), .4);
+    border-radius: 2px;
+
+    color: var(--dorado-claro);
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+.btn-tema:hover,
+.btn-cerrar:hover {
+    background: var(--dorado);
+    color: #111;
+    border-color: var(--dorado);
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--dorado-claro);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+========================================== */
+
+.contenedor-carta {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 105px 30px 50px;
+}
+
+/* ==========================================
+   BIENVENIDA
+========================================== */
+
+.bienvenida {
+    max-width: 760px;
+    margin: 0 auto 85px;
+    text-align: center;
+    animation: aparecer .9s ease both;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-bottom: 26px;
+
+    color: var(--dorado);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 6px;
+}
+
+.bienvenida h1 {
+    color: var(--blanco);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(43px, 7vw, 76px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+
+.bienvenida h1 span {
+    color: var(--dorado-claro);
+    font-style: italic;
+}
+
+.bienvenida > p:last-child {
+    max-width: 460px;
+    margin: 0 auto;
+
+    color: var(--gris);
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.1;
+    letter-spacing: .3px;
+}
+
+/* ==========================================
+   CARTA PERSONAL
+   Su tema es independiente del tema general
+========================================== */
+
+.carta-personal {
+    /* Valores predeterminados de la carta */
+    --dorado: #c9a45c;
+    --dorado-claro: #ead5a3;
+    --acento-rgb: 201, 164, 92;
+
+    position: relative;
+    isolation: isolate;
+
+    width: 100%;
+    max-width: 790px;
+    margin: 0 auto;
+    padding: 78px 85px 65px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--acento-rgb), .055),
+            transparent 35%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(255,255,255,.012),
+            transparent
+        ),
+        var(--fondo-tarjeta);
+
+    border: 1px solid rgba(var(--acento-rgb), .35);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.48),
+        0 0 65px rgba(var(--acento-rgb), .035);
+
+    animation: aparecer .9s ease .15s both;
+}
+
+/* ==========================================
+   SEIS TEMAS PERSONALIZADOS DE LA CARTA
+========================================== */
+
+.carta-personal[data-tema-carta="dorado"] {
+    --dorado: #c9a45c;
+    --dorado-claro: #ead5a3;
+    --acento-rgb: 201, 164, 92;
+}
+
+.carta-personal[data-tema-carta="azul"] {
+    --dorado: #5c9ec9;
+    --dorado-claro: #a3d5ea;
+    --acento-rgb: 92, 158, 201;
+}
+
+.carta-personal[data-tema-carta="rosa"] {
+    --dorado: #c96c91;
+    --dorado-claro: #efb8cd;
+    --acento-rgb: 201, 108, 145;
+}
+
+.carta-personal[data-tema-carta="verde"] {
+    --dorado: #6eaa7c;
+    --dorado-claro: #b5dfbd;
+    --acento-rgb: 110, 170, 124;
+}
+
+.carta-personal[data-tema-carta="morado"] {
+    --dorado: #9b7acb;
+    --dorado-claro: #d0b9ef;
+    --acento-rgb: 155, 122, 203;
+}
+
+.carta-personal[data-tema-carta="rojo"] {
+    --dorado: #c75e5e;
+    --dorado-claro: #edaaaa;
+    --acento-rgb: 199, 94, 94;
+}
+
+/* Marco interior */
+
+.carta-personal::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    z-index: -1;
+    pointer-events: none;
+
+    border: 1px solid rgba(var(--acento-rgb), .10);
+}
+
+/* Esquinas decorativas */
+
+.carta-personal::after {
+    content: "✧";
+    position: absolute;
+    top: 24px;
+    right: 29px;
+
+    color: var(--dorado);
+    font-size: 18px;
+    opacity: .65;
+}
+
+/* Adorno */
+
+.adorno {
+    color: var(--dorado);
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 30px;
+
+    animation: brillo 4s ease-in-out infinite;
+}
+
+/* Subtítulo */
+
+.subtitulo-carta {
+    color: var(--dorado);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+/* Título de la carta */
+
+.carta-personal h2 {
+    max-width: 600px;
+    margin: 0 auto;
+
+    color: var(--blanco);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(37px, 5vw, 53px);
+    font-weight: 500;
+    line-height: 1.1;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+/* Línea decorativa */
+
+.linea-dorada {
+    width: 85px;
+    height: 1px;
+    margin: 34px auto 48px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+
+    box-shadow: 0 0 15px rgba(var(--acento-rgb), .3);
+}
+
+/* Contenido */
+
+.contenido-texto {
+    min-height: 100px;
+
+    color: #d5d0c7;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.4;
+    letter-spacing: .15px;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* Despedida */
+
+.despedida {
+    margin-top: 50px;
+
+    color: var(--dorado-claro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* Firma */
+
+.firma {
+    margin-top: 65px;
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(var(--acento-rgb), .2);
+
+    color: var(--dorado);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.firma span {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+/* ==========================================
+   DESCARGA DEL PDF
+========================================== */
+
+.zona-descarga {
+    margin: 55px auto 0;
+    text-align: center;
+}
+
+.btn-descargar {
+    min-height: 53px;
+    padding: 0 30px;
+
+    background: linear-gradient(
+        110deg,
+        var(--dorado),
+        var(--dorado-claro)
+    );
+
+    border: 1px solid var(--dorado);
+    border-radius: 2px;
+
+    color: #17120b;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        filter .3s ease;
+}
+
+.btn-descargar:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+    box-shadow: 0 12px 35px rgba(var(--acento-rgb), .2);
+}
+
+.btn-descargar:active {
+    transform: translateY(0);
+}
+
+.zona-descarga p {
+    margin-top: 16px;
+
+    color: #817b72;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+}
+
+/* ==========================================
+   MENSAJES
+========================================== */
+
+.mensaje-carta {
+    margin: 25px auto 0;
+    max-width: 600px;
+
+    color: var(--dorado-claro);
+    font-size: 11px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    margin-top: 115px;
+    padding: 35px 15px 20px;
+
+    border-top: 1px solid rgba(var(--acento-rgb), .16);
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 12px;
+
+    color: var(--dorado-claro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+}
+
+footer span {
+    color: #77716a;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes brillo {
+    0%, 100% {
+        opacity: .7;
+        text-shadow: 0 0 5px rgba(var(--acento-rgb), .1);
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 22px rgba(var(--acento-rgb), .35);
+    }
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 800px) {
+    .encabezado-carta {
+        padding: 0 5%;
+    }
+
+    .contenedor-carta {
+        padding-top: 80px;
+    }
+
+    .bienvenida {
+        margin-bottom: 60px;
+    }
+
+    .carta-personal {
+        padding: 65px 55px 55px;
+    }
+
+    .contenido-texto {
+        line-height: 2.2;
+    }
+}
+
+/* ==========================================
+   CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+    .encabezado-carta {
+        height: auto;
+        min-height: 75px;
+        padding: 15px 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 15px;
+        letter-spacing: 2px;
+        flex-shrink: 0;
+    }
+
+    .acciones-encabezado {
+        gap: 7px;
+    }
+
+    .btn-tema,
+    .btn-cerrar {
+        min-height: 35px;
+        padding: 0 9px;
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .contenedor-carta {
+        padding: 70px 17px 35px;
+    }
+
+    .bienvenida {
+        margin-bottom: 48px;
+    }
+
+    .etiqueta {
+        font-size: 8px;
+        letter-spacing: 4px;
+        margin-bottom: 20px;
+    }
+
+    .bienvenida h1 {
+        font-size: clamp(38px, 10vw, 53px);
+        margin-bottom: 18px;
+    }
+
+    .bienvenida > p:last-child {
+        font-size: 10px;
+    }
+
+    .carta-personal {
+        padding: 55px 27px 42px;
+    }
+
+    .carta-personal::before {
+        inset: 8px;
+    }
+
+    .carta-personal::after {
+        top: 15px;
+        right: 18px;
+    }
+
+    .adorno {
+        font-size: 29px;
+        margin-bottom: 24px;
+    }
+
+    .subtitulo-carta {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+    .carta-personal h2 {
+        font-size: 36px;
+    }
+
+    .linea-dorada {
+        margin: 27px auto 35px;
+    }
+
+    .contenido-texto {
+        font-size: 11px;
+        line-height: 2.15;
+    }
+
+    .despedida {
+        margin-top: 35px;
+        font-size: 24px;
+    }
+
+    .firma {
+        margin-top: 48px;
+        padding-top: 25px;
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+    .zona-descarga {
+        margin-top: 40px;
+    }
+
+    .btn-descargar {
+        width: 100%;
+        max-width: 330px;
+        padding: 0 15px;
+        font-size: 8px;
+    }
+
+    footer {
+        margin-top: 75px;
+    }
+}
+
+/* ==========================================
+   CELULARES PEQUEÑOS
+========================================== */
+
+@media (max-width: 360px) {
+    .encabezado-carta {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 10px;
+    }
+
+    .acciones-encabezado {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .carta-personal {
+        padding: 45px 20px 35px;
+    }
+
+    .bienvenida h1 {
+        font-size: 36px;
+    }
+}
+
+/* ==========================================
+   ACCESIBILIDAD
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

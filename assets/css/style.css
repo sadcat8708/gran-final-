@@ -1,0 +1,809 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================
+   VARIABLES GENERALES
+========================================== */
+
+:root {
+    --fondo: #090909;
+    --fondo-secundario: #11100e;
+    --dorado: #c9a45c;
+    --dorado-claro: #ead5a3;
+    --blanco: #f5f1e8;
+    --gris: #aaa49a;
+
+    --borde: rgba(201, 164, 92, 0.2);
+    --dorado-rgb: 201, 164, 92;
+
+    --transicion: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    background: var(--fondo);
+    color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--dorado);
+    color: #100e09;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--dorado-claro);
+    outline-offset: 5px;
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+.encabezado {
+    width: 100%;
+    min-height: 85px;
+    padding: 0 9%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(9, 9, 9, 0.86);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--borde);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: var(--blanco);
+    text-decoration: none;
+
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    transition: color var(--transicion);
+    white-space: nowrap;
+}
+
+.logo:hover {
+    color: var(--dorado-claro);
+}
+
+.logo span {
+    color: var(--dorado);
+}
+
+.encabezado nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.encabezado nav a {
+    color: var(--gris);
+    text-decoration: none;
+
+    font-size: 11px;
+    letter-spacing: 0.5px;
+
+    transition: color var(--transicion);
+    position: relative;
+}
+
+.encabezado nav a:not(.nav-boton)::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--dorado);
+
+    transition: width var(--transicion);
+}
+
+.encabezado nav a:not(.nav-boton):hover {
+    color: var(--dorado-claro);
+}
+
+.encabezado nav a:not(.nav-boton):hover::after {
+    width: 100%;
+}
+
+.encabezado nav .nav-boton {
+    padding: 12px 25px;
+
+    border: 1px solid var(--dorado);
+    color: var(--dorado-claro);
+
+    transition: all var(--transicion);
+}
+
+.encabezado nav .nav-boton:hover {
+    background: var(--dorado);
+    color: #100e09;
+
+    box-shadow:
+        0 0 25px rgba(var(--dorado-rgb), 0.2);
+}
+
+/* ==========================================
+   PORTADA PRINCIPAL
+========================================== */
+
+.portada {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    overflow: hidden;
+
+    padding: 150px 20px 110px;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 42%,
+            rgba(var(--dorado-rgb), 0.14),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 15% 90%,
+            rgba(120, 83, 35, 0.09),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #090909 0%,
+            #12100c 55%,
+            #090909 100%
+        );
+}
+
+/* Textura luminosa */
+
+.portada::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(234, 213, 163, 0.7) 50%, transparent 100%),
+        radial-gradient(1px 1px at 25% 75%, rgba(234, 213, 163, 0.5) 50%, transparent 100%),
+        radial-gradient(2px 2px at 70% 25%, rgba(234, 213, 163, 0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 85% 65%, rgba(234, 213, 163, 0.6) 50%, transparent 100%),
+        radial-gradient(1px 1px at 45% 15%, rgba(234, 213, 163, 0.5) 50%, transparent 100%),
+        radial-gradient(2px 2px at 90% 35%, rgba(234, 213, 163, 0.4) 50%, transparent 100%);
+
+    background-size: 100% 100%;
+
+    opacity: 0.6;
+    pointer-events: none;
+
+    animation: estrellas 8s ease-in-out infinite alternate;
+}
+
+/* Contenido principal */
+
+.contenido-portada {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 900px;
+
+    animation: aparecer 1.2s ease both;
+}
+
+.etiqueta {
+    color: var(--dorado);
+
+    font-size: 10px;
+    letter-spacing: 5px;
+    font-weight: 600;
+
+    margin-bottom: 32px;
+}
+
+.portada h1 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(52px, 7.5vw, 96px);
+    font-weight: 400;
+
+    line-height: 1.04;
+    letter-spacing: -1.5px;
+
+    margin-bottom: 32px;
+}
+
+.portada h1 span,
+.recuerdo h2 span {
+    color: var(--dorado-claro);
+    font-style: italic;
+
+    text-shadow:
+        0 0 35px rgba(var(--dorado-rgb), 0.18);
+}
+
+.descripcion {
+    max-width: 590px;
+
+    margin: 0 auto 42px;
+
+    color: var(--gris);
+
+    font-size: 13px;
+    line-height: 2.1;
+    font-weight: 300;
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.boton-principal,
+.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    padding: 18px 32px;
+
+    background: linear-gradient(
+        135deg,
+        #e2c98f,
+        #bd9851
+    );
+
+    color: #17130c;
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+
+    border: 1px solid rgba(255, 240, 200, 0.35);
+
+    box-shadow:
+        0 8px 30px rgba(var(--dorado-rgb), 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion),
+        background var(--transicion);
+}
+
+.boton-principal span {
+    font-size: 17px;
+
+    transition: transform var(--transicion);
+}
+
+.boton-principal:hover,
+.boton-secundario:hover {
+    background: linear-gradient(
+        135deg,
+        #f0dfb4,
+        #d4b16e
+    );
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 35px rgba(var(--dorado-rgb), 0.25);
+}
+
+.boton-principal:hover span {
+    transform: translateX(5px);
+}
+
+.promocion {
+    margin-top: 65px;
+
+    color: var(--dorado-claro);
+
+    font-size: 10px;
+    letter-spacing: 8px;
+    font-weight: 500;
+
+    opacity: 0.8;
+}
+
+/* ==========================================
+   DECORACIONES
+========================================== */
+
+.brillo {
+    position: absolute;
+
+    width: min(470px, 80vw);
+    aspect-ratio: 1;
+
+    border: 1px solid rgba(var(--dorado-rgb), 0.14);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px rgba(var(--dorado-rgb), 0.025),
+        0 0 0 75px rgba(var(--dorado-rgb), 0.018),
+        0 0 80px rgba(var(--dorado-rgb), 0.05);
+
+    animation: pulso 7s ease-in-out infinite;
+}
+
+.decoracion {
+    position: absolute;
+
+    color: var(--dorado-claro);
+
+    font-size: 42px;
+    opacity: 0.55;
+
+    pointer-events: none;
+
+    animation: flotar 5s ease-in-out infinite;
+}
+
+.decoracion-izquierda {
+    top: 30%;
+    left: 12%;
+}
+
+.decoracion-derecha {
+    bottom: 25%;
+    right: 12%;
+
+    animation-delay: 1.5s;
+}
+
+.bajar {
+    position: absolute;
+    bottom: 30px;
+
+    color: var(--dorado);
+    text-decoration: none;
+
+    font-size: 25px;
+
+    opacity: 0.7;
+
+    animation: bajar 2s ease-in-out infinite;
+
+    transition: opacity var(--transicion);
+}
+
+.bajar:hover {
+    opacity: 1;
+}
+
+/* ==========================================
+   SECCIÓN DE RECUERDOS
+========================================== */
+
+.recuerdo {
+    padding: 130px 20px;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(var(--dorado-rgb), 0.08),
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            #11100e,
+            #0c0c0b
+        );
+}
+
+/* Línea decorativa superior */
+
+.recuerdo::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 90px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+
+    transform: translateX(-50%);
+}
+
+/* Símbolos decorativos */
+
+.recuerdo::after {
+    content: "✦";
+
+    position: absolute;
+
+    bottom: 40px;
+    right: 8%;
+
+    color: var(--dorado);
+
+    opacity: 0.12;
+    font-size: 100px;
+
+    pointer-events: none;
+}
+
+.recuerdo .etiqueta {
+    margin-bottom: 25px;
+}
+
+.recuerdo h2 {
+    max-width: 800px;
+
+    margin: 0 auto 35px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 400;
+
+    line-height: 1.15;
+}
+
+.recuerdo > p:not(.etiqueta) {
+    max-width: 660px;
+
+    margin: 0 auto 20px;
+
+    color: var(--gris);
+
+    font-size: 13px;
+    line-height: 2.1;
+    font-weight: 300;
+}
+
+.boton-secundario {
+    margin-top: 28px;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    padding: 42px 20px;
+
+    text-align: center;
+
+    background: #070707;
+
+    border-top: 1px solid var(--borde);
+}
+
+footer p {
+    color: var(--dorado-claro);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 19px;
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+footer span {
+    color: #77716a;
+
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulso {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 1;
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
+}
+
+@keyframes bajar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+@keyframes estrellas {
+    from {
+        opacity: 0.35;
+    }
+
+    to {
+        opacity: 0.75;
+    }
+}
+
+/* ==========================================
+   ACCESIBILIDAD
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   TABLETAS
+========================================== */
+
+@media (max-width: 900px) {
+    .encabezado {
+        padding: 0 6%;
+    }
+
+    .encabezado nav {
+        gap: 22px;
+    }
+
+    .decoracion-izquierda {
+        left: 6%;
+    }
+
+    .decoracion-derecha {
+        right: 6%;
+    }
+}
+
+/* ==========================================
+   CELULARES
+========================================== */
+
+@media (max-width: 650px) {
+    .encabezado {
+        min-height: 75px;
+        padding: 12px 5%;
+
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .encabezado nav {
+        gap: 12px;
+    }
+
+    .encabezado nav a {
+        font-size: 9px;
+        white-space: nowrap;
+    }
+
+    .encabezado nav .nav-boton {
+        padding: 10px 12px;
+    }
+
+    .portada {
+        padding: 125px 22px 95px;
+    }
+
+    .contenido-portada {
+        width: 100%;
+    }
+
+    .etiqueta {
+        font-size: 8px;
+        letter-spacing: 3px;
+        line-height: 1.8;
+    }
+
+    .portada h1 {
+        font-size: clamp(43px, 11vw, 62px);
+
+        letter-spacing: -0.5px;
+        line-height: 1.08;
+    }
+
+    .descripcion {
+        max-width: 420px;
+
+        font-size: 12px;
+        line-height: 2;
+    }
+
+    .boton-principal,
+    .boton-secundario {
+        padding: 16px 21px;
+        font-size: 9px;
+    }
+
+    .promocion {
+        margin-top: 50px;
+
+        font-size: 9px;
+        letter-spacing: 5px;
+    }
+
+    .decoracion {
+        font-size: 27px;
+    }
+
+    .decoracion-izquierda {
+        top: 19%;
+        left: 5%;
+    }
+
+    .decoracion-derecha {
+        bottom: 17%;
+        right: 5%;
+    }
+
+    .brillo {
+        width: 280px;
+    }
+
+    .recuerdo {
+        padding: 95px 25px;
+    }
+
+    .recuerdo h2 {
+        font-size: clamp(35px, 9vw, 48px);
+    }
+
+    .recuerdo > p:not(.etiqueta) {
+        font-size: 12px;
+    }
+
+    .recuerdo::after {
+        font-size: 55px;
+    }
+
+    footer {
+        padding: 35px 20px;
+    }
+}
+
+/* ==========================================
+   CELULARES PEQUEÑOS
+========================================== */
+
+@media (max-width: 380px) {
+    .encabezado {
+        padding: 10px 4%;
+        gap: 8px;
+    }
+
+    .encabezado nav {
+        gap: 8px;
+    }
+
+    .encabezado nav a {
+        font-size: 8px;
+    }
+
+    .encabezado nav .nav-boton {
+        padding: 9px;
+    }
+
+    .logo {
+        font-size: 14px;
+    }
+
+    .portada h1 {
+        font-size: 43px;
+    }
+
+    .etiqueta {
+        letter-spacing: 2px;
+    }
+}
+
+/* ==========================================
+   PANTALLAS MUY PEQUEÑAS
+========================================== */
+
+@media (max-width: 340px) {
+    .encabezado {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 8px;
+    }
+
+    .encabezado nav {
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .portada {
+        padding-top: 150px;
+    }
+}

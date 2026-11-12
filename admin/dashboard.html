@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
+
+    <title>Panel de Administración | PROM 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- MENÚ LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-symbol">✦</div>
+                <h2>PROM <span>2026</span></h2>
+                <p>PANEL ADMINISTRATIVO</p>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-heading">MENÚ PRINCIPAL</p>
+
+                <a href="#" class="active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="#graduados">
+                    <span class="nav-icon">♙</span>
+                    <span>Graduados</span>
+                </a>
+
+                <a href="#cartas">
+                    <span class="nav-icon">✉</span>
+                    <span>Cartas</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-divider"></div>
+
+                <div class="sidebar-caption">
+                    <span>✦</span>
+                    <p>Una generación,<br>un recuerdo, una historia.</p>
+                </div>
+
+                <button id="logout-btn" class="logout-btn">
+                    <span>↪</span>
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+
+            <!-- ENCABEZADO -->
+            <header class="topbar">
+
+                <div class="topbar-title">
+                    <span class="eyebrow">PROMOCIÓN 2026</span>
+                    <h1>Panel de administración</h1>
+                    <p>Gestiona y organiza los recuerdos de nuestra generación.</p>
+                </div>
+
+                <div class="admin-info">
+                    <div class="admin-avatar">A</div>
+
+                    <div class="admin-details">
+                        <strong>Administrador</strong>
+                        <span>Panel de gestión</span>
+                    </div>
+
+                    <span class="admin-status"></span>
+                </div>
+
+            </header>
+
+            <!-- BIENVENIDA -->
+            <section class="welcome">
+
+                <div class="welcome-content">
+                    <span class="welcome-label">BIENVENIDO AL SISTEMA</span>
+
+                    <h2>¡Un gran recuerdo comienza aquí!</h2>
+
+                    <p>
+                        Administra los graduados, organiza sus cartas
+                        y mantén viva la historia de PROM 2026.
+                    </p>
+                </div>
+
+                <div class="welcome-decoration">
+                    <span>✦</span>
+                    <span>2026</span>
+                    <span>✦</span>
+                </div>
+
+            </section>
+
+            <!-- ESTADÍSTICAS -->
+            <section class="stats-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">RESUMEN GENERAL</span>
+                        <h2>Estadísticas</h2>
+                    </div>
+
+                    <span class="live-indicator">
+                        <span></span>
+                        Datos del sistema
+                    </span>
+                </div>
+
+                <div class="stats">
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+                            <div class="stat-icon">♙</div>
+                            <span class="stat-decoration">01</span>
+                        </div>
+
+                        <div class="stat-card-info">
+                            <p>Total de graduados</p>
+                            <h2 id="total-graduados">--</h2>
+                        </div>
+
+                        <div class="stat-card-line"></div>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+                            <div class="stat-icon">✉</div>
+                            <span class="stat-decoration">02</span>
+                        </div>
+
+                        <div class="stat-card-info">
+                            <p>Total de cartas</p>
+                            <h2 id="total-cartas">--</h2>
+                        </div>
+
+                        <div class="stat-card-line"></div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- GRADUADOS -->
+            <section id="graduados" class="content-card">
+
+                <div class="content-card-header">
+
+                    <div>
+                        <span class="eyebrow">GESTIÓN DE PERSONAS</span>
+                        <h2>Graduados</h2>
+                        <p>Administra la información de los integrantes de PROM 2026.</p>
+                    </div>
+
+                    <div class="content-card-icon">♙</div>
+
+                </div>
+
+                <div class="card-divider"></div>
+
+                <!-- FORMULARIO -->
+                <div class="formulario-graduado">
+
+                    <div class="form-section-heading">
+                        <span class="form-icon">＋</span>
+
+                        <div>
+                            <h3>Agregar nuevo graduado</h3>
+                            <p>Completa los datos para registrar un integrante.</p>
+                        </div>
+                    </div>
+
+                    <form id="form-graduado">
+
+                        <div>
+                            <label for="numero">Número de graduado</label>
+                            <input
+                                type="number"
+                                id="numero"
+                                min="1"
+                                required
+                                placeholder="Ej. 25"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="nombre">Nombre completo</label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                maxlength="150"
+                                required
+                                placeholder="Nombre del graduado"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="correo">Correo electrónico</label>
+                            <input
+                                type="email"
+                                id="correo"
+                                maxlength="255"
+                                placeholder="correo@ejemplo.com"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="curso">Curso</label>
+                            <select id="curso" required>
+                                <option value="PROM 2026">PROM 2026</option>
+                                <option value="C Y M">C Y M</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="activo">Estado</label>
+                            <select id="activo">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="guardar-graduado">
+                            <span>＋</span>
+                            Agregar graduado
+                        </button>
+
+                    </form>
+
+                    <p id="mensaje-graduado" role="status"></p>
+
+                </div>
+
+                <!-- BUSCADOR -->
+                <div class="list-header">
+
+                    <div>
+                        <h3>Listado de graduados</h3>
+                        <p>Consulta y administra los registros existentes.</p>
+                    </div>
+
+                    <div class="buscador-graduados">
+                        <span>⌕</span>
+
+                        <input
+                            type="search"
+                            id="buscar-graduado"
+                            placeholder="Buscar graduado..."
+                            aria-label="Buscar por nombre, número o correo"
+                        >
+                    </div>
+
+                </div>
+
+                <!-- LISTA -->
+                <div id="lista-graduados">
+                    Cargando graduados...
+                </div>
+
+            </section>
+
+            <!-- CARTAS -->
+            <section id="cartas" class="content-card">
+
+                <div class="content-card-header">
+
+                    <div>
+                        <span class="eyebrow">RECUERDOS DE GENERACIÓN</span>
+                        <h2>Cartas de graduación</h2>
+                        <p>Crea, consulta y administra los mensajes dedicados a cada graduado.</p>
+                    </div>
+
+                    <div class="content-card-icon">✉</div>
+
+                </div>
+
+                <div class="card-divider"></div>
+
+                <div id="lista-cartas">
+                    Cargando cartas...
+                </div>
+
+            </section>
+
+            <!-- PIE -->
+            <footer class="dashboard-footer">
+                <span>PROM <strong>2026</strong></span>
+                <p>Una generación · Un recuerdo · Una historia</p>
+                <span>✦</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+
+</body>
+</html>
