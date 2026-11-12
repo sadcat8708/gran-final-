@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://sadcat8708.github.io/gran-final/">Ver proyecto publicado</a>
+  <a href="https://sadcat8708.github.io/gran-final-/">Ver proyecto publicado</a>
   ·
   <a href="https://github.com/sadcat8708/gran-final-">Ver repositorio</a>
 </p>
