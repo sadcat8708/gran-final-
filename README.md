@@ -1,20 +1,32 @@
 # Antes de que termine este capítulo 🎓
 
-**Proyecto de regalo virtual de graduación — Promoción 2026 de Mecatrónica**
+### Proyecto de regalo virtual de graduación — Promoción 2026 de Mecatrónica
+
+<p align="center">
+  <strong>Un recuerdo digital para una generación que siempre tendrá algo que recordar.</strong>
+</p>
+
+<p align="center">
+  <a href="https://sadcat8708.github.io/gran-final/">Ver proyecto publicado</a>
+  ·
+  <a href="https://github.com/sadcat8708/gran-final-">Ver repositorio</a>
+</p>
 
 ---
 
 ## 1. Descripción del proyecto
 
-*Antes de que termine este capítulo* es una experiencia digital creada como regalo de despedida para los integrantes de la Promoción 2026 de Mecatrónica del INEM.
+**Antes de que termine este capítulo** es una experiencia digital desarrollada como regalo de despedida para los integrantes de la Promoción 2026 de Mecatrónica del INEM.
 
 La plataforma permite que cada graduado ingrese de manera personalizada, descubra una carta especial preparada para él y pueda descargarla en formato PDF para conservarla como recuerdo.
 
-Además, cuenta con un panel administrativo privado que permite gestionar los destinatarios, crear y editar cartas, controlar su publicación y consultar información del sistema.
+El sistema también dispone de un panel administrativo privado que permite gestionar los destinatarios y sus cartas.
+
+El proyecto busca convertir los recuerdos, experiencias y momentos compartidos durante la etapa escolar en un recuerdo digital que pueda conservarse después de la graduación.
 
 ## 2. Objetivo
 
-Crear un espacio digital personalizado que permita a los integrantes de la Promoción 2026 de Mecatrónica recibir y conservar un mensaje especial de despedida, como recuerdo de las experiencias y momentos compartidos durante su etapa escolar.
+Crear un espacio digital personalizado que permita a los integrantes de la Promoción 2026 de Mecatrónica recibir y conservar un mensaje especial de despedida, como recuerdo de esta etapa de sus vidas.
 
 ## 3. Tecnologías utilizadas
 
@@ -24,7 +36,8 @@ Crear un espacio digital personalizado que permita a los integrantes de la Promo
 | CSS3 | Diseño visual, estilos, animaciones y adaptación a dispositivos. |
 | JavaScript | Lógica e interactividad del sistema. |
 | Supabase | Autenticación y almacenamiento de información. |
-| GitHub Pages | Alojamiento y publicación del sitio web. |
+| GitHub | Control de versiones y alojamiento del repositorio. |
+| GitHub Pages | Publicación del sitio web. |
 | jsPDF | Generación y descarga de cartas en PDF. |
 
 ## 4. Funcionalidades
@@ -42,7 +55,7 @@ Crear un espacio digital personalizado que permita a los integrantes de la Promo
 
 ### Para el administrador
 
-- Acceso privado al panel administrativo.
+- Acceso privado al área administrativa.
 - Consulta de graduados registrados.
 - Búsqueda de destinatarios.
 - Gestión de destinatarios.
@@ -52,19 +65,12 @@ Crear un espacio digital personalizado que permita a los integrantes de la Promo
 - Consulta de estadísticas.
 - Exportación de copias de seguridad.
 
-### Características adicionales
-
-- Diseño visual con temática de graduación.
-- Interfaz adaptable a diferentes tamaños de pantalla.
-- Personalización de las cartas.
-- Almacenamiento de información mediante Supabase.
-
 ## 5. Estructura del proyecto
 
-El proyecto está organizado en las siguientes carpetas y archivos:
+El proyecto está organizado de la siguiente manera:
 
 ```text
-PROYECTO-PROM-2026/
+gran-final-/
 │
 ├── admin/
 │   ├── dashboard.html
@@ -97,112 +103,65 @@ PROYECTO-PROM-2026/
 ├── docs/
 │   └── estructura.md
 │
+├── .gitignore
 ├── acceso.html
 ├── carta.html
 ├── index.html
-├── README.md
-└── .gitinore
+└── README.md
 ```
 
 ### Organización de las carpetas
 
-- **admin/:** contiene las páginas relacionadas con el acceso y el panel administrativo.
-- **assets/css/:** almacena las hojas de estilos de las diferentes secciones.
-- **assets/js/:** contiene los scripts que controlan la lógica y las funcionalidades.
-- **assets/fonts/:** carpeta destinada a los recursos tipográficos.
-- **assets/icons/:** carpeta destinada a los recursos gráficos e iconos.
-- **database/:** contiene el esquema de la base de datos y las políticas de seguridad de Supabase.
-- **docs/:** almacena documentación complementaria del proyecto.
+- **admin/:** contiene las páginas del área administrativa.
+- **assets/fonts/:** carpeta destinada a las fuentes tipográficas.
+- **assets/icons/:** carpeta destinada a los iconos.
+- **assets/css/:** contiene los estilos de las diferentes páginas.
+- **assets/js/:** contiene los scripts que controlan las funcionalidades del sistema.
+- **database/:** carpeta reservada para documentación o scripts SQL.
+- **docs/:** contiene documentación complementaria.
 
 ### Archivos principales
 
 | Archivo | Descripción |
 |---|---|
-| `index.html` | Página principal. |
-| `acceso.html` | Página de acceso de los graduados. |
-| `carta.html` | Página donde se visualiza la carta personal. |
+| `index.html` | Página principal del proyecto. |
+| `acceso.html` | Acceso de los graduados. |
+| `carta.html` | Visualización de la carta personalizada. |
 | `admin/dashboard.html` | Panel de administración. |
 | `admin/index.html` | Página adicional del área administrativa. |
 | `assets/js/supabase.js` | Configuración de conexión con Supabase. |
+| `assets/js/acceso.js` | Lógica de autenticación de graduados. |
+| `assets/js/carta.js` | Carga y gestión de la carta personal. |
 | `assets/js/pdf.js` | Generación de documentos PDF. |
-| `database/schema.sql` | Estructura de la base de datos. |
-| `database/policies.sql` | Políticas de seguridad de la base de datos. |
+| `assets/js/dashboard.js` | Funcionalidades del dashboard. |
+| `assets/js/admin.js` | Funcionalidades del área administrativa. |
 
-## 6. Requisitos
+## 6. Arquitectura de la base de datos
 
-Para trabajar con el proyecto se necesita:
+El proyecto utiliza **Supabase** como servicio externo para la autenticación y el almacenamiento de información.
 
-- Visual Studio Code u otro editor de código.
-- Un navegador web actualizado.
-- Conexión a internet.
-- Un proyecto configurado en Supabase.
-- Las credenciales públicas necesarias para establecer la conexión con Supabase.
+La configuración de la base de datos se administra directamente desde el panel de Supabase.
 
-## 7. Configuración de Supabase
+### Tablas principales
 
-Supabase se utiliza para gestionar la autenticación de los usuarios y almacenar la información de los graduados y sus cartas.
+**Tabla `personas`**
 
-El proyecto incluye dos archivos SQL:
+Almacena la información de los graduados y su relación con las cuentas de autenticación.
 
-- `database/schema.sql`: contiene la definición del esquema de la base de datos.
-- `database/policies.sql`: contiene las políticas de seguridad.
+Entre los campos utilizados por el código se encuentran:
 
-Para configurar el entorno:
+- `id`: identificador de la persona.
+- `nombre`: nombre del graduado.
+- `user_id`: identificador de su cuenta de autenticación.
+- `activo`: indica si el usuario está habilitado.
 
-1. Crear o utilizar el proyecto correspondiente en Supabase.
-2. Revisar y ejecutar los scripts SQL necesarios.
-3. Configurar la autenticación de usuarios.
-4. Verificar las relaciones y permisos de las tablas.
-5. Configurar las credenciales públicas en `assets/js/supabase.js`.
+**Tabla `cartas`**
 
-**Importante:** nunca publiques contraseñas administrativas ni claves privadas como `service_role` en el código del navegador. Las operaciones deben estar protegidas mediante políticas de seguridad adecuadas.
+Almacena la información de las cartas personalizadas.
 
-## 8. Instalación y ejecución local
+Entre los campos utilizados por el código se encuentran:
 
-1. Clonar o descargar el repositorio.
-2. Abrir la carpeta principal del proyecto en Visual Studio Code.
-3. Revisar la configuración de Supabase.
-4. Abrir el proyecto mediante un servidor local.
-5. Ingresar a la página principal.
-6. Comprobar que las páginas y las conexiones funcionen correctamente.
-
-## 9. Publicación
-
-El proyecto utiliza GitHub Pages para alojar la plataforma.
-
-Para publicar una actualización:
-
-1. Subir los cambios al repositorio de GitHub.
-2. Verificar la configuración de GitHub Pages.
-3. Esperar a que termine el proceso de publicación.
-4. Ingresar al enlace del proyecto.
-5. Comprobar el funcionamiento de las diferentes secciones.
-
-**Enlace del proyecto:** [Agregar enlace definitivo]
-
-**Repositorio:** [Agregar enlace del repositorio]
-
-## 10. Seguridad y privacidad
-
-Debido a que la plataforma maneja cuentas de acceso e información personalizada, se deben tener en cuenta las siguientes recomendaciones:
-
-- Mantener privadas las credenciales administrativas.
-- No compartir contraseñas de los usuarios.
-- Proteger las tablas mediante políticas RLS.
-- Verificar los permisos de lectura y escritura.
-- Evitar exponer información privada en el código público.
-- Realizar copias de seguridad periódicas.
-
-## 11. Autoría y créditos
-
-**Autores:** Promoción 2026 - Mecatrónica.
-
-**Institución:** INEM.
-
-**Proyecto:** Antes de que termine este capítulo.
-
-Desarrollado como un recuerdo digital de despedida para los integrantes de la Promoción 2026 de Mecatrónica.
-
----
-
-*Porque algunos capítulos terminan, pero los recuerdos permanecen.* 🎓
+- `persona_id`: identifica al destinatario de la carta.
+- `titulo`: título de la carta.
+- `contenido`: mensaje personalizado.
+- `des
