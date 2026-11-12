@@ -1,32 +1,44 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#101010">
+    <meta name="description" content="Una carta especial preparada para recordar nuestra historia como PROM 2026.">
+
     <title>Mi carta | Promoción 2026</title>
+
     <link rel="stylesheet" href="assets/css/carta.css">
 </head>
+
 <body>
 
     <header class="encabezado-carta">
-        <a href="index.html" class="logo">PROM <span>2026</span></a>
+
+        <a href="index.html" class="logo">
+            PROM <span>2026</span>
+        </a>
 
         <div class="acciones-encabezado">
+
             <button id="cambiar-tema" class="btn-tema" type="button">
                 ◐ Cambiar tema
             </button>
 
-            <button id="cerrar-sesion" class="btn-cerrar">
+            <button id="cerrar-sesion" class="btn-cerrar" type="button">
                 Cerrar sesión
             </button>
+
         </div>
+
     </header>
 
     <main class="contenedor-carta">
 
         <section class="bienvenida">
+
             <p class="etiqueta">PROMOCIÓN 2026</p>
 
             <h1>
@@ -38,6 +50,7 @@
                 Porque cada persona hizo parte de esta historia.
                 Este recuerdo es especialmente para ti.
             </p>
+
         </section>
 
         <section class="carta-personal">
@@ -65,20 +78,55 @@
         </section>
 
         <div class="zona-descarga">
-            <button id="descargar-pdf" class="btn-descargar">
+
+            <button id="descargar-pdf" class="btn-descargar" type="button">
                 ↓ Descargar mi carta en PDF
             </button>
+
             <p>Guarda este recuerdo para siempre.</p>
+
         </div>
 
         <p id="mensaje-carta" class="mensaje-carta"></p>
 
-        <footer>
-            <p>Una etapa termina. Nuestra historia continúa.</p>
-            <span>Hecho con cariño · PROM 2026</span>
-        </footer>
-
     </main>
+
+    <footer class="footer-personal">
+
+        <div class="footer-contenido">
+
+            <span class="footer-etiqueta">UN ÚLTIMO RECUERDO</span>
+
+            <h2>
+                Antes de que termine
+                <span>este capítulo...</span>
+            </h2>
+
+            <p class="footer-mensaje">
+                Gracias por formar parte de esta historia.
+                Cada momento compartido, cada risa y cada experiencia
+                hicieron que esta etapa fuera única.
+                Tal vez nuestros caminos tomen rumbos diferentes,
+                pero siempre tendremos recuerdos que nos unirán.
+            </p>
+
+            <div class="footer-linea"></div>
+
+            <p class="footer-promocion">
+                PROM 2026 <span>·</span> MECATRÓNICA
+            </p>
+
+            <p class="footer-autor">
+                Una creación de <strong>Jhoan Gelves</strong>
+            </p>
+
+            <span class="footer-firma">
+                Hecho con cariño, para todos ustedes.
+            </span>
+
+        </div>
+
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabase.js"></script>

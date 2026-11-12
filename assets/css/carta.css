@@ -17,7 +17,6 @@
 
 /* ==========================================
    TEMAS GENERALES
-   Afectan toda la página excepto la carta
 ========================================== */
 
 :root[data-tema-general="dorado"] {
@@ -232,11 +231,9 @@ button:focus-visible {
 
 /* ==========================================
    CARTA PERSONAL
-   Su tema es independiente del tema general
 ========================================== */
 
 .carta-personal {
-    /* Valores predeterminados de la carta */
     --dorado: #c9a45c;
     --dorado-claro: #ead5a3;
     --acento-rgb: 201, 164, 92;
@@ -513,30 +510,133 @@ button:focus-visible {
 }
 
 /* ==========================================
-   PIE DE PÁGINA
+   FOOTER PERSONAL - PROM 2026
 ========================================== */
 
-footer {
-    margin-top: 115px;
-    padding: 35px 15px 20px;
+.footer-personal {
+    position: relative;
+    isolation: isolate;
 
-    border-top: 1px solid rgba(var(--acento-rgb), .16);
+    width: 100%;
+    margin-top: 40px;
+    padding: 85px 25px 55px;
+
     text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(var(--acento-rgb), 0.09),
+            transparent 65%
+        ),
+        #070707;
+
+    border-top: 1px solid rgba(var(--acento-rgb), 0.2);
 }
 
-footer p {
-    margin-bottom: 12px;
+.footer-contenido {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.footer-etiqueta {
+    display: block;
+
+    color: var(--dorado);
+
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+}
+
+.footer-personal h2 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(36px, 5vw, 55px);
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: var(--blanco);
+
+    margin-bottom: 25px;
+}
+
+.footer-personal h2 span {
+    display: block;
 
     color: var(--dorado-claro);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
     font-style: italic;
 }
 
-footer span {
+.footer-mensaje {
+    max-width: 570px;
+
+    margin: 0 auto;
+
+    color: var(--gris);
+
+    font-size: 12px;
+    font-weight: 300;
+
+    line-height: 2.2;
+}
+
+.footer-linea {
+    width: 65px;
+    height: 1px;
+
+    margin: 38px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+}
+
+.footer-promocion {
+    color: var(--dorado-claro);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+}
+
+.footer-promocion span {
+    color: var(--dorado);
+}
+
+.footer-autor {
+    margin-top: 17px;
+
+    color: var(--gris);
+
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.footer-autor strong {
+    color: var(--blanco);
+    font-weight: 600;
+}
+
+.footer-firma {
+    display: block;
+
+    margin-top: 30px;
+
     color: #77716a;
-    font-size: 9px;
-    letter-spacing: 2px;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 17px;
+    font-style: italic;
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================
@@ -705,8 +805,28 @@ footer span {
         font-size: 8px;
     }
 
-    footer {
-        margin-top: 75px;
+    .footer-personal {
+        margin-top: 25px;
+        padding: 65px 25px 40px;
+    }
+
+    .footer-etiqueta {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+    .footer-mensaje {
+        font-size: 11px;
+        line-height: 2;
+    }
+
+    .footer-promocion {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .footer-personal h2 {
+        font-size: 36px;
     }
 }
 
