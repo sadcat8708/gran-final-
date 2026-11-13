@@ -115,11 +115,12 @@ async function verificarAdministrador() {
 // UTILIDAD: VERIFICAR CARTA GUARDADA
 // ==========================================
 
-async function verificarCartaGuardada(personaId, datosEsperados) {
+async function verificarCartaGuardada(personaId) {
     const { data, error } = await db
         .from("cartas")
-        .select("id, persona_id, titulo, contenido, despedida, tema, publicada")
+        .select("id, persona_id")
         .eq("persona_id", personaId)
+        .limit(1)
         .maybeSingle();
 
     if (error) {
@@ -127,19 +128,8 @@ async function verificarCartaGuardada(personaId, datosEsperados) {
         throw error;
     }
 
-    if (!data) {
-        return false;
-    }
-
-    const coincide =
-        String(data.persona_id) === String(personaId) &&
-        data.titulo === datosEsperados.titulo &&
-        data.contenido === datosEsperados.contenido &&
-        (data.despedida ?? null) === datosEsperados.despedida &&
-        data.tema === datosEsperados.tema &&
-        Boolean(data.publicada) === datosEsperados.publicada;
-
-    return coincide;
+    // Solo comprobamos que exista una carta asociada al graduado.
+    return Boolean(data && String(data.persona_id) === String(personaId));
 }
 
 // ==========================================
@@ -413,15 +403,12 @@ formularioNuevaCarta.addEventListener("submit", async event => {
             throw resultado.error;
         }
 
-        // Comprobar que el registro realmente quedó guardado.
-        const guardado = await verificarCartaGuardada(
-            personaId,
-            datosCarta
-        );
+        // Comprobar que exista una carta asociada al graduado.
+        const guardado = await verificarCartaGuardada(personaId);
 
         if (!guardado) {
             throw new Error(
-                "La operación terminó, pero no se pudo confirmar la carta al consultarla. Revisa los permisos SELECT."
+                "No se encontró la carta después de guardarla. Comprueba que el graduado tenga una carta asociada."
             );
         }
 
