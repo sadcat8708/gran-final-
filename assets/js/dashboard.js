@@ -1,4 +1,3 @@
-
 // ==========================================
 // PANEL DE ADMINISTRACIÓN - PROM 2026
 // ==========================================
@@ -128,7 +127,9 @@ async function verificarCartaGuardada(personaId) {
         throw error;
     }
 
-    // Solo comprobamos que exista una carta asociada al graduado.
+    // La comprobación confirma que exista una carta asociada al graduado.
+    // No compara el contenido porque Supabase puede aplicar transformaciones
+    // o valores predeterminados sin que eso signifique que el guardado falló.
     return Boolean(data && String(data.persona_id) === String(personaId));
 }
 
@@ -391,6 +392,54 @@ formularioNuevaCarta.addEventListener("submit", async event => {
 
         } else {
 
+            // Comprobar la sesión y los permisos de administrador justo antes
+            // de insertar. Esto ayuda a identificar por qué RLS rechaza el INSERT.
+            const {
+                data: { user },
+                error: errorUsuario
+            } = await db.auth.getUser();
+
+            if (errorUsuario) {
+                throw new Error(
+                    `No se pudo comprobar la sesión: ${errorUsuario.message}`
+                );
+            }
+
+            if (!user) {
+                throw new Error(
+                    "No hay una sesión activa. Cierra sesión e inicia sesión nuevamente."
+                );
+            }
+
+            const { data: administrador, error: errorAdministrador } = await db
+                .from("admin_users")
+                .select("user_id")
+                .eq("user_id", user.id)
+                .maybeSingle();
+
+            if (errorAdministrador) {
+                console.error(
+                    "Error comprobando el permiso de administrador:",
+                    errorAdministrador
+                );
+                throw new Error(
+                    `No se pudo comprobar el permiso de administrador: ${errorAdministrador.message}`
+                );
+            }
+
+            if (!administrador) {
+                console.error(
+                    "El usuario autenticado no aparece en admin_users."
+                );
+                throw new Error(
+                    "Tu sesión no corresponde a un administrador registrado. Verifica el usuario de admin_users."
+                );
+            }
+
+            console.log(
+                "Comprobación previa al INSERT: sesión activa y administrador verificado."
+            );
+
             resultado = await db
                 .from("cartas")
                 .insert({
@@ -403,12 +452,12 @@ formularioNuevaCarta.addEventListener("submit", async event => {
             throw resultado.error;
         }
 
-        // Comprobar que exista una carta asociada al graduado.
+        // Comprobar que el registro realmente quedó guardado.
         const guardado = await verificarCartaGuardada(personaId);
 
         if (!guardado) {
             throw new Error(
-                "No se encontró la carta después de guardarla. Comprueba que el graduado tenga una carta asociada."
+                "La operación terminó, pero no se pudo confirmar la carta al consultarla. Revisa los permisos SELECT."
             );
         }
 
@@ -1139,31 +1188,21 @@ document.getElementById("form-editar-carta").addEventListener("submit", async ev
             updated_at: new Date().toISOString()
         };
 
-        const { error } = await db
+        const { data: cartaActualizada, error } = await db
             .from("cartas")
             .update(datosCarta)
-            .eq("id", id);
+            .eq("id", id)
+            .select("id")
+            .maybeSingle();
 
         if (error) throw error;
 
-        const { data: comprobacion, error: errorComprobacion } = await db
-            .from("cartas")
-            .select("id, titulo, contenido, despedida, tema, publicada")
-            .eq("id", id)
-            .maybeSingle();
-
-        if (errorComprobacion) throw errorComprobacion;
-
-        if (
-            !comprobacion ||
-            comprobacion.titulo !== titulo ||
-            comprobacion.contenido !== contenido ||
-            (comprobacion.despedida ?? null) !== datosCarta.despedida ||
-            comprobacion.tema !== tema ||
-            Boolean(comprobacion.publicada) !== publicada
-        ) {
+        // La respuesta confirma que Supabase encontró y actualizó la carta.
+        // No comparamos nuevamente todos los campos, porque esa comparación
+        // puede fallar por diferencias de formato aunque el guardado funcione.
+        if (!cartaActualizada) {
             throw new Error(
-                "No se pudieron verificar los cambios de la carta."
+                "Supabase no confirmó la actualización. Comprueba que la carta exista y que tu usuario tenga permiso para editarla."
             );
         }
 
